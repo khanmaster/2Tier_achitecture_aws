@@ -38,6 +38,27 @@ sudo apt-get install nodejs -y
 # install pm2
 sudo npm install pm2 -g
 ```
+### Create reverse proxy so we can load our app without the 3000 port
+- `sudo nano /etc/nginx/sites-available/default`
+
+```
+server {
+    listen 80;
+
+    server_name _;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+
+```
 
 ### install mongodb on EC2 instance for DB
 
@@ -63,4 +84,11 @@ sudo mkdir -p /data/db
  sudo service mongod start
  ```
 
- 
+ ### Create env variable in our app ec2 to connect to db
+
+```
+ sudo echo "export DB_HOST=mongodb://172.31.45.161:27017/posts" >> ~/.bashrc
+```
+- Source the .bashrc file
+
+- `source ~/.bashrc `
