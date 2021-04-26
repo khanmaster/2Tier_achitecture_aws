@@ -1,4 +1,7 @@
 # AWS
+# 2 Tier app deployment on AWS
+# Ec2 instance for our nodeapp
+# Ec2 instance for our DB
 
 
 
