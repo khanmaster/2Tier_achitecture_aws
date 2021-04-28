@@ -142,7 +142,7 @@ sudo mkdir -p /data/db
 - Security groups are stateful, if you allowed inbount rule that will automatically be allowed outbound
  
  ### What are the Ephemeral ports
-- They are shortly lived ports, they are automatically allocated based on the demand
+- They are shortly lived ports, they are automatically allocated based on the request/demand
 - Allows outbound responses to clients on the internet
 - they range from 1024-65535
 
